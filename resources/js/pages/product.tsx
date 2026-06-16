@@ -1,7 +1,7 @@
-export default function () {
+export default function Product() {
     return (
         <>
-        Product
+        <h1>Product</h1>
         </>
-    );
+    )
 }
