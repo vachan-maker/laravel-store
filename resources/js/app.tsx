@@ -14,7 +14,7 @@ createInertiaApp({
         switch (true) {
             case name === 'welcome':
                 return null;
-            case name === 'store':
+            case name === 'store'|| name === 'product': //name of the react component
                 return null;
             case name.startsWith('auth/'):
                 return AuthLayout;
