@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { usePage } from "@inertiajs/react"
 import { useState, useEffect } from "react"
 type Product = {
@@ -37,6 +38,10 @@ export default function Product() {
         <div className="flex flex-col">
         <h1 className="text-6xl">{product?.title}</h1>
         <p>Price:{product?.price}</p>
+        <div className="flex flex-row gap-4">
+        <Button className="bg-orange-400 cursor-pointer">Buy Now</Button>
+        <Button className="bg-green-400 cursor-pointer">Add to Cart</Button>
+        </div>
         </div>
         </div>
         </>
