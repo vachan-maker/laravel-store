@@ -1,7 +1,10 @@
 
-import { Layout } from "lucide-react";
+import { usePage } from "@inertiajs/react";
 import { useState } from "react";
 import { useEffect } from "react";
+import type { Auth } from '@/types';
+import { logout } from "@/routes";
+import TextLink from "@/components/text-link";
 type Product = {
     id: number;
     title:string,
@@ -9,7 +12,12 @@ type Product = {
     image:string
 
 };
+type PageProps = {
+    auth: Auth;
+};
+
 export default function Hello() {
+    const { auth } = usePage<PageProps>().props;
     const [products, setProducts] = useState<Product[]>([]);
     useEffect(()=>{
         const fetchProducts = async () => {
@@ -32,6 +40,8 @@ export default function Hello() {
         <>
         <div className="p-10 text-center">
         <h1 className="text-4xl">Store</h1>
+        <h2 className="text-gray-200">Hello, <b>{auth.user.name}</b>. What are you going to buy today?</h2>
+        <TextLink href={logout()}>Logout</TextLink>
         <div className="grid grid-cols-4 gap-4 p-10">
         {products?.map((product) =>(
             <a href={`/store/${product.id}`}>
