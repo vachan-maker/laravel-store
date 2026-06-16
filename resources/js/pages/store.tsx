@@ -40,7 +40,7 @@ export default function Hello() {
         <>
         <div className="p-10 text-center">
         <h1 className="text-4xl">Store</h1>
-        <h2 className="text-gray-200">Hello, <b>{auth.user.name}</b>. What are you going to buy today?</h2>
+        <h2 className="text-gray-200">Hello, {auth.user && auth.user.name}. What are you going to buy today?</h2>
         <TextLink href={logout()}>Logout</TextLink>
         <div className="grid grid-cols-4 gap-4 p-10">
         {products?.map((product) =>(
