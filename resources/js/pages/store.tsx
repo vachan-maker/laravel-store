@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import type { Auth } from '@/types';
 import { logout } from "@/routes";
 import TextLink from "@/components/text-link";
+
 type Product = {
     id: number;
     title:string,
@@ -41,7 +42,8 @@ export default function Hello() {
         <div className="p-10 text-center">
         <h1 className="text-4xl">Store</h1>
         <h2 className="text-gray-200">Hello, {auth.user && auth.user.name}. What are you going to buy today?</h2>
-        <TextLink href={logout()}>Logout</TextLink>
+        {auth.user && <TextLink href={logout()} className="text-red-500 cursor-pointer">Logout</TextLink>}
+        {!auth.user && <TextLink href="/login" className="text-yellow-500 cursor-pointer">Login</TextLink>} 
         <div className="grid grid-cols-4 gap-4 p-10">
         {products?.map((product) =>(
             <a href={`/store/${product.id}`}>
